@@ -1,7 +1,7 @@
 {
-  "name": "elm-webpack-skeleton",
+  "name": "elm-tick-tack-toe",
   "version": "0.0.1",
-  "description": "A skeleton project for using elm with webpack.",
+  "description": "An elm project to write tick tack toe.",
   "main": "src/index.js",
   "scripts": {
     "build": "rimraf dist && webpack",
@@ -11,7 +11,6 @@
   },
   "keywords": [
     "elm",
-    "skeleton",
     "webpack",
     "elm-test",
     "elm-webpack-loader",
@@ -21,7 +20,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/greyepoxy/elm-webpack-skeleton.git"
+    "url": "https://github.com/greyepoxy/elm-tick-tack-toe.git"
   },
   "devDependencies": {
     "basscss": "^8.0.1",

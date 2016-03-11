@@ -1,7 +1,7 @@
 {
     "version": "0.0.1",
-    "summary": "A skeleton project for using elm with webpack.",
-    "repository": "https://github.com/greyepoxy/elm-webpack-skeleton.git",
+    "summary": "An elm project to write tick tack toe.",
+    "repository": "https://github.com/greyepoxy/elm-tick-tack-toe.git",
     "license": "MIT",
     "source-directories": [
         "src"

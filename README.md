@@ -1,7 +1,7 @@
-# elm-webpack-skeleton
-Skeleton project for using elm with webpack. Unit test support via elm-test. In dev mode hot module swapping is support via elm-hot-loader.
+# elm-tick-tack-toe
+An elm project to write tick-tack-toe. Note: this is a work in progress!
 
-## Usage
+## Development Commands
 ###Build a distributable version:
 `npm run build` or `npm run watch` files output to `dist/`.
 
