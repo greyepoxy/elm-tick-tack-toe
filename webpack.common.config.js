@@ -1,5 +1,5 @@
 var path = require("path");
-var HtmlWebpackPlugin = require( 'html-webpack-plugin' );
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
@@ -17,12 +17,14 @@ module.exports = {
         filename: 'index.html'
       })
     ],
-
   },
   
   indexFileConfig: {
+    entry: path.join( __dirname, 'src/index.js' ),
+    
     output: {
       path: path.resolve(__dirname + '/dist'),
+      filename: '[name].[hash].js'
     },
     
     module: {
@@ -47,34 +49,8 @@ module.exports = {
     },
   },
   
-  indexEntryConfig: {
-    entry: {
-      app: [
-        './src/index.js'
-      ]
-    },
-    output: {
-      filename: '[hash].js'
-    },
-  },
-  
-  indexDevEntryConfig: {
-    entry: {
-      app: [
-        './src/indexDev.js'
-      ]
-    },
-    output: {
-      filename: '[name].js'
-    },
-  },
-  
   testFileConfig: {
-    entry: {
-      app: [
-        './src/tests.js'
-      ]
-    },
+    entry: path.join( __dirname, 'src/tests.js' ),
 
     output: {
       path: path.resolve(__dirname + '/dist/tests'),
@@ -91,27 +67,23 @@ module.exports = {
   
   elmConfig: {
     module: {
-      loaders: [
-        {
+      noParse: /\.elm$/,
+      loaders: [{
           test: /\.elm$/,
           exclude: [/elm-stuff/, /node_modules/],
           loader: 'elm-webpack'
-        }
-      ],
-      noParse: /\.elm$/,
+      }],
     }
   },
   
   elmHotLoaderConfig: {
     module: {
-      loaders: [
-        {
+      noParse: /\.elm$/,
+      loaders: [{
           test: /\.elm$/,
           exclude: [/elm-stuff/, /node_modules/],
           loader: 'elm-hot!elm-webpack'
-        }
-      ],
-      noParse: /\.elm$/,
+      }],
     }
   },
 

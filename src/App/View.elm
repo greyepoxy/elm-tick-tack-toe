@@ -1,13 +1,13 @@
-module App.View (..) where
+module App.View exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events
-import App.Actions exposing (..)
+import App.Message exposing (..)
 import App.Model exposing (..)
 import Array exposing (Array)
 
-boxStyle : Html.Attribute
+boxStyle : Html.Attribute msg
 boxStyle = style [
     ("border", "2px solid black"),
     ("width", "200px"),
@@ -17,8 +17,8 @@ boxStyle = style [
   ]
 
 
-drawBox: Signal.Address Action -> Int -> Int -> Box -> Html
-drawBox address rowNum colNum box = 
+drawBox: Int -> Int -> Box -> Html Message
+drawBox rowNum colNum box = 
   let
     contents = case box of
       Empty -> ""
@@ -26,17 +26,17 @@ drawBox address rowNum colNum box =
       O -> "O"
   in
     div
-      [ boxStyle, Html.Events.onClick address (Select (rowNum, colNum))  ]
+      [ boxStyle, Html.Events.onClick (Select (rowNum, colNum))  ]
       [ text contents ]
 
-view : Signal.Address Action -> AppModel -> Html
-view address model =
-  Array.indexedMap (drawRow address) model.board
+view : AppModel -> Html Message
+view model =
+  Array.indexedMap drawRow model.board
     |> Array.toList
     |> div []
 
-drawRow: Signal.Address Action -> Int -> Array Box -> Html
-drawRow address rowNum array =
-  Array.indexedMap (drawBox address rowNum) array
+drawRow: Int -> Array Box -> Html Message
+drawRow rowNum array =
+  Array.indexedMap (drawBox rowNum) array
     |> Array.toList
     |> div [ style [ ("clear", "both" )]]

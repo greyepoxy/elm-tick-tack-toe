@@ -1,17 +1,17 @@
-module App.Update (..) where
+module App.Update exposing (..)
 
 import App.Model exposing (..)
-import App.Actions exposing (..)
-import Effects exposing (Effects)
+import App.Message exposing (..)
+import Platform.Cmd  exposing (Cmd)
 
 import Array exposing (Array)
 
 
-update : Action -> AppModel -> ( AppModel, Effects Action )
-update action model =
-  case action of
-    NoOp -> ( model, Effects.none )
-    Select loc -> ( updateModelForSelect loc model, Effects.none )
+update : Message -> AppModel -> ( AppModel, Cmd Message )
+update message model =
+  case message of
+    NoOp -> ( model, Cmd.none )
+    Select loc -> ( updateModelForSelect loc model, Cmd.none )
 
 
 updateModelForSelect : (Int,Int) -> AppModel -> AppModel

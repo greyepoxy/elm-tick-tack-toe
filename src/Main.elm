@@ -1,35 +1,17 @@
-module Main (..) where
+module Main exposing (..)
 
-import Html exposing (..)
-import Effects exposing (Effects, Never)
-import Task exposing (Task)
-import StartApp
-import App.Actions exposing (..)
+import Html.App
+import Platform.Cmd exposing (Cmd)
+import App.Message exposing (..)
 import App.Model exposing (..)
 import App.Update exposing (..)
 import App.View exposing (..)
 
 
-init : ( AppModel, Effects Action )
+init : ( AppModel, Cmd Message )
 init =
-  ( initialModel, Effects.none )
+  ( initialModel, Cmd.none )
 
-
-app : StartApp.App AppModel
-app =
-  StartApp.start
-    { init = init
-    , inputs = []
-    , update = update
-    , view = view
-    }
-
-
-main : Signal Html
+main: Platform.Program Never
 main =
-  app.html
-
-
-port runner : Signal (Task Never ())
-port runner =
-  app.tasks
+  Html.App.program { init = init, update = update, view = view, subscriptions = \_ -> Sub.none }
